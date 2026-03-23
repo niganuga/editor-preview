@@ -59,7 +59,7 @@ function ImageCanvas() {
         }}
       >
         <Image
-          src="/design-preview.png"
+          src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/design-preview.png"
           alt="Uploaded design — playful monster mash illustration"
           width={420}
           height={420}

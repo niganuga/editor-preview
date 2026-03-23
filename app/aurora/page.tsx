@@ -31,7 +31,7 @@ function HeroCanva() {
       }
     >
       <Image
-        src="/aurora-editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/aurora-editor-preview.png"
         alt="PrintReady Flow editor"
         width={1280}
         height={800}
@@ -69,7 +69,7 @@ function HeroKittl() {
       }
     >
       <Image
-        src="/aurora-editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/aurora-editor-preview.png"
         alt="PrintReady Flow editor"
         width={1280}
         height={800}
@@ -106,7 +106,7 @@ function HeroAI() {
       }
     >
       <Image
-        src="/aurora-editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/aurora-editor-preview.png"
         alt="PrintReady Flow editor"
         width={1280}
         height={800}

@@ -24,7 +24,7 @@ function HeroCanva() {
       }
     >
       <Image
-        src="/editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/editor-preview.png"
         alt="PrintReady Flow editor showing print readiness check"
         width={1280}
         height={800}
@@ -56,7 +56,7 @@ function HeroKittl() {
       }
     >
       <Image
-        src="/editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/editor-preview.png"
         alt="PrintReady Flow editor showing print readiness check"
         width={1280}
         height={800}
@@ -87,7 +87,7 @@ function HeroAI() {
       }
     >
       <Image
-        src="/editor-preview.png"
+        src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/editor-preview.png"
         alt="PrintReady Flow editor showing print readiness check"
         width={1280}
         height={800}
