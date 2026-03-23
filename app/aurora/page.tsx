@@ -12,11 +12,9 @@ function HeroCanva() {
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For Canva creators
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
-            Canva made the design easy.{" "}
-            <span className="text-[#1A1A1A]">
-              Printing it shouldn&apos;t be the hard part.
-            </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight max-w-4xl">
+            <span className="text-white">Canva made the design easy.</span>{" "}
+            <span className="text-[#1A1A1A]">Printing it shouldn&apos;t be the hard part.</span>
           </h1>
           <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Check any file free. Fix issues in one click. No signup required.
@@ -44,11 +42,9 @@ function HeroKittl() {
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For Kittl designers
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
-            Your Kittl design looks great.{" "}
-            <span className="text-[#1A1A1A]">
-              Is it print-ready?
-            </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight max-w-4xl">
+            <span className="text-white">Your Kittl design looks great.</span>{" "}
+            <span className="text-[#1A1A1A]">Is it print-ready?</span>
           </h1>
           <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Find out in 10 seconds. Fix it in one click.
@@ -75,11 +71,9 @@ function HeroAI() {
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For AI creators
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
-            AI made creation instant.{" "}
-            <span className="text-[#1A1A1A]">
-              The file your printer needs? Still takes an expert.
-            </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight max-w-4xl">
+            <span className="text-white">AI made creation instant.</span>{" "}
+            <span className="text-[#1A1A1A]">The file your printer needs? Still takes an expert.</span>
           </h1>
           <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Until now.
