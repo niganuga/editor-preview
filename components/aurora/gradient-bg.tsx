@@ -3,52 +3,56 @@
 export function GradientBg({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Base gradient */}
+      {/* Base gradient — soft periwinkle → mauve → peach → warm orange */}
       <div
         className="fixed inset-0 z-0"
         style={{
-          background: "linear-gradient(180deg, #C5CAE9 0%, #E1BEE7 25%, #F8BBD0 45%, #FFCCBC 65%, #FF8A65 85%, #E91E63 100%)",
+          background: "linear-gradient(180deg, #B8C4E8 0%, #D4B8D9 20%, #E8BFD0 38%, #F0C9C0 52%, #F2C4AC 65%, #E8A882 80%, #D98A6A 100%)",
         }}
       />
 
-      {/* Aurora orbs */}
+      {/* Central warm glow — bottom center */}
       <div
         className="fixed z-0"
         style={{
-          width: "60vw",
-          height: "60vw",
-          left: "20%",
-          bottom: "-10%",
+          width: "70vw",
+          height: "50vw",
+          left: "15%",
+          bottom: "-15%",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,152,0,0.7) 0%, rgba(233,30,99,0.3) 40%, transparent 70%)",
-          filter: "blur(80px)",
-          animation: "auroraFloat 12s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="fixed z-0"
-        style={{
-          width: "40vw",
-          height: "40vw",
-          right: "5%",
-          top: "10%",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(156,39,176,0.4) 0%, rgba(103,58,183,0.2) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(230,130,60,0.6) 0%, rgba(220,110,70,0.3) 35%, rgba(200,140,120,0.1) 60%, transparent 80%)",
           filter: "blur(60px)",
-          animation: "auroraFloat 16s ease-in-out infinite reverse",
+          animation: "auroraFloat 18s ease-in-out infinite",
         }}
       />
+
+      {/* Soft lavender wash — top right */}
+      <div
+        className="fixed z-0"
+        style={{
+          width: "45vw",
+          height: "45vw",
+          right: "-5%",
+          top: "0%",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(170,160,210,0.4) 0%, rgba(190,175,220,0.15) 50%, transparent 75%)",
+          filter: "blur(50px)",
+          animation: "auroraFloat 22s ease-in-out infinite reverse",
+        }}
+      />
+
+      {/* Pink midtone — center left */}
       <div
         className="fixed z-0"
         style={{
           width: "35vw",
           height: "35vw",
-          left: "0%",
-          top: "20%",
+          left: "-5%",
+          top: "30%",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(186,147,210,0.5) 0%, rgba(149,117,205,0.2) 40%, transparent 70%)",
-          filter: "blur(70px)",
-          animation: "auroraFloat 14s ease-in-out infinite 2s",
+          background: "radial-gradient(circle, rgba(210,160,180,0.35) 0%, rgba(200,150,170,0.1) 50%, transparent 75%)",
+          filter: "blur(50px)",
+          animation: "auroraFloat 16s ease-in-out infinite 3s",
         }}
       />
 
@@ -60,8 +64,8 @@ export function GradientBg({ children }: { children: React.ReactNode }) {
       <style>{`
         @keyframes auroraFloat {
           0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(3%, -5%) scale(1.05); }
-          66% { transform: translate(-3%, 3%) scale(0.97); }
+          33% { transform: translate(2%, -3%) scale(1.03); }
+          66% { transform: translate(-2%, 2%) scale(0.98); }
         }
       `}</style>
     </div>

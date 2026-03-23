@@ -9,22 +9,16 @@ function HeroCanva() {
     <ContainerScroll
       titleComponent={
         <div className="flex flex-col items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/40">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For Canva creators
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
             Canva made the design easy.{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #FB923C 0%, #F472B6 50%, #A78BFA 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="text-[#1A1A1A]">
               Printing it shouldn&apos;t be the hard part.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/50 max-w-xl mt-2">
+          <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Check any file free. Fix issues in one click. No signup required.
           </p>
         </div>
@@ -47,22 +41,16 @@ function HeroKittl() {
     <ContainerScroll
       titleComponent={
         <div className="flex flex-col items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/40">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For Kittl designers
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
             Your Kittl design looks great.{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #FB923C 0%, #F472B6 50%, #A78BFA 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="text-[#1A1A1A]">
               Is it print-ready?
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/50 max-w-xl mt-2">
+          <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Find out in 10 seconds. Fix it in one click.
           </p>
         </div>
@@ -84,22 +72,16 @@ function HeroAI() {
     <ContainerScroll
       titleComponent={
         <div className="flex flex-col items-center gap-4">
-          <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/40">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#1A1A1A]/40">
             For AI creators
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight max-w-4xl drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
             AI made creation instant.{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #FB923C 0%, #F472B6 50%, #A78BFA 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="text-[#1A1A1A]">
               The file your printer needs? Still takes an expert.
             </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/50 max-w-xl mt-2">
+          <p className="text-lg md:text-xl text-[#1A1A1A]/50 max-w-xl mt-2">
             Until now.
           </p>
         </div>
@@ -121,11 +103,11 @@ export default function AuroraLanding() {
     <GradientBg>
       <HeroCanva />
 
-      <div className="max-w-xs mx-auto border-t border-white/10" />
+      <div className="max-w-xs mx-auto border-t border-[#1A1A1A]/10" />
 
       <HeroKittl />
 
-      <div className="max-w-xs mx-auto border-t border-white/10" />
+      <div className="max-w-xs mx-auto border-t border-[#1A1A1A]/10" />
 
       <HeroAI />
     </GradientBg>
