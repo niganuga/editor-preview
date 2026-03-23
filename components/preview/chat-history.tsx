@@ -1,25 +1,36 @@
 "use client"
 
-const MESSAGES = [
+interface Message {
+  role: "ai" | "user"
+  text: string
+  type?: "plan"
+}
+
+const MESSAGES: Message[] = [
   {
-    role: "ai" as const,
-    text: "Hey! I'm your AI Designer. Drop an image on the canvas and I'll check it for print readiness — or just tell me what you need.",
+    role: "user",
+    text: "I want to print this on a youth t-shirt. Is this file good to go?",
   },
   {
-    role: "user" as const,
-    text: "I uploaded my logo design. Can you check if it's ready for DTF printing on a black hoodie?",
+    role: "ai",
+    text: "Checked your file. Found a few things to sort out before this prints well.",
   },
   {
-    role: "ai" as const,
-    text: "Checking your file now... Found 2 issues:\n\n• Resolution is 72 DPI — needs 300 DPI for clean DTF output at this size.\n• Semi-transparent pixels detected around the edges — these may cause white halos on dark fabric.\n\nWant me to fix both? I can upscale and clean the edges in one pass.",
+    role: "ai",
+    text: "Your image has a solid white background. If you print this as-is, that white prints as a visible block on the shirt. For most apparel — especially dark fabrics — you want a transparent background so only the design transfers. Keeps the shirt lightweight, breathable, and the print feels premium.",
   },
   {
-    role: "user" as const,
-    text: "Yes, fix both please.",
+    role: "ai",
+    text: "I also see you want this on a youth tee. Standard youth full-front chest print is about 9\" wide × 11\" max height. Your image dimensions work, but it's currently at 72 DPI. For prints to come out sharp, you need 300 DPI or higher. At 72, the detail will look soft and blurry on fabric.",
   },
   {
-    role: "ai" as const,
-    text: "On it. Running upscale (4x) and edge cleanup now...",
+    role: "ai",
+    text: "Here's what I'd do:\n\n1. Crop the design to its actual edges\n2. Upscale to 300+ DPI for sharp output\n3. Remove the white background → transparent PNG\n4. Minor color adjustments so darks and lights pop on fabric\n5. Resize to 9\" × 11\" youth chest standard\n\nYou'll get a print-ready transparent PNG, sized exactly for a youth tee.",
+    type: "plan",
+  },
+  {
+    role: "ai",
+    text: "Sound good? Hit Fix All to start.",
   },
 ]
 
@@ -42,29 +53,50 @@ export function ChatHistory() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-3">
+      <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-2.5">
         {MESSAGES.map((msg, i) => (
           <div key={i} className="flex flex-col gap-1">
-            <span className="text-[10px] font-semibold uppercase tracking-wider px-1"
-              style={{ color: msg.role === "ai" ? "#E8863A" : "#9B9589" }}
-            >
-              {msg.role === "ai" ? "AI Designer" : "You"}
-            </span>
+            {/* Only show label when role changes from previous */}
+            {(i === 0 || MESSAGES[i - 1].role !== msg.role) && (
+              <span
+                className="text-[10px] font-semibold uppercase tracking-wider px-1"
+                style={{ color: msg.role === "ai" ? "#E8863A" : "#9B9589" }}
+              >
+                {msg.role === "ai" ? "Print Ready" : "You"}
+              </span>
+            )}
             <div
               className="rounded-xl px-3 py-2.5 text-xs leading-relaxed whitespace-pre-line"
               style={{
                 backgroundColor:
-                  msg.role === "ai"
-                    ? "rgba(42, 41, 38, 0.8)"
-                    : "rgba(232, 134, 58, 0.1)",
+                  msg.type === "plan"
+                    ? "rgba(232, 134, 58, 0.08)"
+                    : msg.role === "ai"
+                      ? "rgba(42, 41, 38, 0.8)"
+                      : "rgba(232, 134, 58, 0.1)",
                 color: "#EDE9E0",
-                border: msg.role === "user" ? "1px solid rgba(232, 134, 58, 0.2)" : "none",
+                border:
+                  msg.type === "plan"
+                    ? "1px solid rgba(232, 134, 58, 0.25)"
+                    : msg.role === "user"
+                      ? "1px solid rgba(232, 134, 58, 0.2)"
+                      : "none",
               }}
             >
               {msg.text}
             </div>
           </div>
         ))}
+
+        {/* Fix All CTA */}
+        <div className="px-1 pt-1">
+          <button
+            type="button"
+            className="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest bg-[#E8863A] text-[#1A1A1A] cursor-pointer hover:opacity-90 transition-opacity"
+          >
+            Fix All
+          </button>
+        </div>
       </div>
     </div>
   )
