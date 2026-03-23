@@ -1,65 +1,114 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Image from "next/image"
+import { ContainerScroll } from "@/components/ui/container-scroll-animation"
+
+function HeroCanva() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <ContainerScroll
+      titleComponent={
+        <div className="flex flex-col items-center gap-4">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#5A554D]">
+            For Canva creators
+          </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
+            Canva made the design easy.{" "}
+            <span className="text-[#E8863A]">
+              Printing it shouldn&apos;t be the hard part.
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-[#5A554D] max-w-xl mt-2">
+            Check any file free. Fix issues in one click. No signup required.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      }
+    >
+      <Image
+        src="/editor-preview.png"
+        alt="PrintReady Flow editor showing print readiness check"
+        width={1280}
+        height={800}
+        className="w-full h-full object-cover object-left-top"
+        priority
+      />
+    </ContainerScroll>
+  )
+}
+
+function HeroKittl() {
+  return (
+    <ContainerScroll
+      titleComponent={
+        <div className="flex flex-col items-center gap-4">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#5A554D]">
+            For Kittl designers
+          </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
+            Your Kittl design looks great.{" "}
+            <span className="text-[#E8863A]">
+              Is it print-ready?
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-[#5A554D] max-w-xl mt-2">
+            Find out in 10 seconds. Fix it in one click.
+          </p>
         </div>
-      </main>
+      }
+    >
+      <Image
+        src="/editor-preview.png"
+        alt="PrintReady Flow editor showing print readiness check"
+        width={1280}
+        height={800}
+        className="w-full h-full object-cover object-left-top"
+      />
+    </ContainerScroll>
+  )
+}
+
+function HeroAI() {
+  return (
+    <ContainerScroll
+      titleComponent={
+        <div className="flex flex-col items-center gap-4">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#5A554D]">
+            For AI creators
+          </span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[1.05] tracking-tight max-w-4xl">
+            AI made creation instant.{" "}
+            <span className="text-[#E8863A]">
+              The file your printer needs? Still takes an expert.
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-[#5A554D] max-w-xl mt-2">
+            Until now.
+          </p>
+        </div>
+      }
+    >
+      <Image
+        src="/editor-preview.png"
+        alt="PrintReady Flow editor showing print readiness check"
+        width={1280}
+        height={800}
+        className="w-full h-full object-cover object-left-top"
+      />
+    </ContainerScroll>
+  )
+}
+
+export default function LandingPage() {
+  return (
+    <div className="bg-[#F5F2EC]">
+      <HeroCanva />
+
+      <div className="max-w-xs mx-auto border-t border-[#C4BFB4]" />
+
+      <HeroKittl />
+
+      <div className="max-w-xs mx-auto border-t border-[#C4BFB4]" />
+
+      <HeroAI />
     </div>
-  );
+  )
 }
