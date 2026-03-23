@@ -9,28 +9,28 @@ interface Message {
 const MESSAGES: Message[] = [
   {
     role: "user",
-    text: "I want to print this on a youth t-shirt. Is this file good to go?",
+    text: "I want to print this on a youth t-shirt. Is this file ready?",
   },
   {
     role: "ai",
-    text: "Checked your file. Found a few things to sort out before this prints well.",
+    text: "Got it — youth tee. I checked your file and found 3 things to fix before it prints well.",
   },
   {
     role: "ai",
-    text: "Your image has a solid white background. If you print this as-is, that white prints as a visible block on the shirt. You want a transparent background — only the design transfers. Keeps the shirt lightweight and the print feels premium.",
+    text: "The white background will print as a visible white box on the shirt. We need to remove it so only your design shows. This also makes the print softer and more comfortable to wear.",
   },
   {
     role: "ai",
-    text: "Also, your image is at 72 DPI. For sharp prints you need 300+. At 72, details will look soft on fabric. Standard youth chest print is about 9\" × 11\".",
+    text: "Your image is a bit low quality for print. It'll come out blurry at this size. I can sharpen it up so it looks clean on fabric.",
   },
   {
     role: "ai",
-    text: "Here's what I'd do:\n\n1. Crop to actual design edges\n2. Upscale to 300+ DPI\n3. Remove white background → transparent PNG\n4. Color adjustments for fabric contrast\n5. Resize to 9\" × 11\" youth standard",
+    text: "Here's the plan:\n\n1. Crop to the design edges\n2. Sharpen for print quality\n3. Remove the white background\n4. Boost colors for fabric\n5. Size it for a youth tee",
     type: "plan",
   },
   {
     role: "ai",
-    text: "Sound good? Hit Fix All to start.",
+    text: "You'll get a clean file, right size, ready to send to your printer. Hit Fix All and I'll handle it.",
   },
 ]
 

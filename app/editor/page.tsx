@@ -53,18 +53,19 @@ function ImageCanvas() {
   return (
     <div className="fixed inset-0 z-0 flex items-center justify-center">
       <div
-        className="rounded-2xl overflow-hidden"
+        className="rounded-2xl overflow-hidden bg-[#F5F2EC]"
         style={{
           boxShadow: "0 8px 32px rgba(0,0,0,0.12), 4px 4px 0px 0px rgba(26,26,26,0.15)",
           border: "2px solid #C4BFB4",
+          padding: "24px",
         }}
       >
         <Image
           src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/design-preview.png"
           alt="Uploaded design — playful monster mash illustration"
-          width={480}
-          height={480}
-          className="object-contain"
+          width={420}
+          height={420}
+          className="object-contain rounded-xl"
           priority
         />
       </div>

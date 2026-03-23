@@ -56,14 +56,16 @@ function ImageCanvas() {
         className="rounded-3xl overflow-hidden"
         style={{
           boxShadow: "0 16px 64px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1)",
+          backgroundColor: "rgba(255,255,255,0.95)",
+          padding: "24px",
         }}
       >
         <Image
           src="https://baounngyxqighaipmxgc.supabase.co/storage/v1/object/public/assets/preview/design-preview.png"
           alt="Uploaded design — playful monster mash illustration"
-          width={420}
-          height={420}
-          className="object-contain"
+          width={380}
+          height={380}
+          className="object-contain rounded-2xl"
           priority
         />
       </div>

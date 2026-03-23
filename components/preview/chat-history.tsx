@@ -9,28 +9,28 @@ interface Message {
 const MESSAGES: Message[] = [
   {
     role: "user",
-    text: "I want to print this on a youth t-shirt. Is this file good to go?",
+    text: "I want to print this on a youth t-shirt. Is this file ready?",
   },
   {
     role: "ai",
-    text: "Checked your file. Found a few things to sort out before this prints well.",
+    text: "Got it — youth tee. I checked your file and found 3 things to fix before it prints well.",
   },
   {
     role: "ai",
-    text: "Your image has a solid white background. If you print this as-is, that white prints as a visible block on the shirt. For most apparel — especially dark fabrics — you want a transparent background so only the design transfers. Keeps the shirt lightweight, breathable, and the print feels premium.",
+    text: "The white background will print as a visible white box on the shirt. We need to remove it so only your design shows. This also makes the print softer and more comfortable to wear.",
   },
   {
     role: "ai",
-    text: "I also see you want this on a youth tee. Standard youth full-front chest print is about 9\" wide × 11\" max height. Your image dimensions work, but it's currently at 72 DPI. For prints to come out sharp, you need 300 DPI or higher. At 72, the detail will look soft and blurry on fabric.",
+    text: "Your image is a bit low quality for print. It'll come out blurry at this size. I can sharpen it up so it looks clean on fabric.",
   },
   {
     role: "ai",
-    text: "Here's what I'd do:\n\n1. Crop the design to its actual edges\n2. Upscale to 300+ DPI for sharp output\n3. Remove the white background → transparent PNG\n4. Minor color adjustments so darks and lights pop on fabric\n5. Resize to 9\" × 11\" youth chest standard\n\nYou'll get a print-ready transparent PNG, sized exactly for a youth tee.",
+    text: "Here's the plan:\n\n1. Crop to the design edges\n2. Sharpen for print quality\n3. Remove the white background\n4. Boost colors for fabric\n5. Size it for a youth tee",
     type: "plan",
   },
   {
     role: "ai",
-    text: "Sound good? Hit Fix All to start.",
+    text: "You'll get a clean file, right size, ready to send to your printer. Hit Fix All and I'll handle it.",
   },
 ]
 
@@ -56,7 +56,6 @@ export function ChatHistory() {
       <div className="flex-1 overflow-y-auto px-3 py-3 flex flex-col gap-2.5">
         {MESSAGES.map((msg, i) => (
           <div key={i} className="flex flex-col gap-1">
-            {/* Only show label when role changes from previous */}
             {(i === 0 || MESSAGES[i - 1].role !== msg.role) && (
               <span
                 className="text-[10px] font-semibold uppercase tracking-wider px-1"
