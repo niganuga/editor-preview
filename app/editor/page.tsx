@@ -6,46 +6,31 @@ import {
   ZoomOut,
   Sun,
   Replace,
+  Undo2,
+  Redo2,
 } from "lucide-react"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { ChromePanel } from "@/components/ui/kit"
+import { IconButton } from "@/components/ui/kit"
 import { Header } from "@/components/preview/header"
 import { ChatBar } from "@/components/preview/chat-bar"
 import { RightPanel } from "@/components/preview/right-panel"
 import { ChatHistory } from "@/components/preview/chat-history"
 
-const CANVAS_ACTIONS = [
-  { icon: ZoomIn, label: "Zoom In" },
-  { icon: ZoomOut, label: "Zoom Out" },
-  { icon: Sun, label: "Canvas Light/Dark" },
-  { icon: Replace, label: "Replace Image" },
-]
-
 function CanvasControls() {
   return (
-    <div
-      className="fixed top-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1 rounded-2xl px-2 py-1.5"
-      style={{
-        backgroundColor: "rgba(30, 30, 28, 0.9)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        border: "1px solid #3A3935",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.3), 3px 3px 0px 0px #1A1A1A",
-      }}
+    <ChromePanel
+      className="fixed top-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-0.5 px-1 py-1"
+      overflowVisible
     >
-      {CANVAS_ACTIONS.map((action) => (
-        <Tooltip key={action.label}>
-          <TooltipTrigger
-            className="w-8 h-8 rounded-xl flex items-center justify-center text-[#9B9589] hover:text-[#EDE9E0] hover:bg-[#3A3935] cursor-pointer transition-colors"
-            aria-label={action.label}
-          >
-            <action.icon className="w-4 h-4" />
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{action.label}</p>
-          </TooltipContent>
-        </Tooltip>
-      ))}
-    </div>
+      <IconButton icon={Undo2} tooltip="Undo" iconSize={16} disabled />
+      <IconButton icon={Redo2} tooltip="Redo" iconSize={16} disabled />
+      <div className="w-px h-4 bg-[#3A3935] mx-0.5" />
+      <IconButton icon={ZoomIn} tooltip="Zoom In" iconSize={16} />
+      <IconButton icon={ZoomOut} tooltip="Zoom Out" iconSize={16} />
+      <div className="w-px h-4 bg-[#3A3935] mx-0.5" />
+      <IconButton icon={Sun} tooltip="Canvas Light/Dark" iconSize={16} />
+      <IconButton icon={Replace} tooltip="Replace Image" iconSize={16} />
+    </ChromePanel>
   )
 }
 

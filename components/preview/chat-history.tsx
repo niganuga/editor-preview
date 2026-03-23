@@ -1,5 +1,8 @@
 "use client"
 
+import { ChromePanel } from "@/components/ui/kit"
+import { Text } from "@/components/ui/utilities"
+
 interface Message {
   role: "ai" | "user"
   text: string
@@ -36,20 +39,13 @@ const MESSAGES: Message[] = [
 
 export function ChatHistory() {
   return (
-    <div
-      className="fixed left-4 top-20 bottom-28 z-20 w-[340px] flex flex-col rounded-2xl overflow-hidden border border-[#3A3935]"
-      style={{
-        backgroundColor: "rgba(30, 30, 28, 0.9)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
-      }}
+    <ChromePanel
+      className="fixed left-4 top-20 bottom-28 z-20 w-[340px] flex flex-col"
+      style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.3)" }}
     >
       {/* Panel header */}
       <div className="px-4 py-3 border-b border-[#3A3935]">
-        <span className="text-xs font-bold tracking-widest uppercase text-[#9B9589]">
-          Conversation
-        </span>
+        <Text variant="label" color="muted">Conversation</Text>
       </div>
 
       {/* Messages */}
@@ -57,12 +53,13 @@ export function ChatHistory() {
         {MESSAGES.map((msg, i) => (
           <div key={i} className="flex flex-col gap-1">
             {(i === 0 || MESSAGES[i - 1].role !== msg.role) && (
-              <span
-                className="text-[10px] font-semibold uppercase tracking-wider px-1"
-                style={{ color: msg.role === "ai" ? "#E8863A" : "#9B9589" }}
+              <Text
+                variant="role"
+                color={msg.role === "ai" ? "accent" : "muted"}
+                className="px-1"
               >
                 {msg.role === "ai" ? "Print Ready" : "You"}
-              </span>
+              </Text>
             )}
             <div
               className="rounded-xl px-3 py-2.5 text-xs leading-relaxed whitespace-pre-line"
@@ -91,12 +88,12 @@ export function ChatHistory() {
         <div className="px-1 pt-1">
           <button
             type="button"
-            className="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest bg-[#E8863A] text-[#1A1A1A] cursor-pointer hover:opacity-90 transition-opacity"
+            className="w-full min-h-[44px] py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest bg-[#E8863A] text-[#1A1A1A] cursor-pointer hover:opacity-90 transition-opacity"
           >
             Fix All
           </button>
         </div>
       </div>
-    </div>
+    </ChromePanel>
   )
 }

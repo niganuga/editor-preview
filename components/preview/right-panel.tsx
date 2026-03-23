@@ -1,16 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import {
-  CheckCircle,
-  Download,
-  Cpu,
-  History,
-  X,
-  XCircle,
-  AlertTriangle,
-  Info,
-} from "lucide-react"
+import { CheckCircle, Download, Cpu, History, X } from "lucide-react"
+import { ChromePanel } from "@/components/ui/kit"
+import { StatusBadge } from "@/components/ui/kit"
+import { Text } from "@/components/ui/utilities"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 interface CheckItem {
@@ -29,19 +23,6 @@ const READINESS_CHECKS: CheckItem[] = [
   { label: "Color Mode", value: "RGB", status: "info" },
   { label: "Sharpness", value: "Low — will soften on fabric", status: "warning" },
 ]
-
-function StatusIcon({ status }: { status: CheckItem["status"] }) {
-  switch (status) {
-    case "pass":
-      return <CheckCircle size={12} className="text-[#4CAF6A] shrink-0" />
-    case "fail":
-      return <XCircle size={12} className="text-[#D64045] shrink-0" />
-    case "warning":
-      return <AlertTriangle size={12} className="text-[#D4943D] shrink-0" />
-    case "info":
-      return <Info size={12} className="text-[#3B8DB0] shrink-0" />
-  }
-}
 
 interface PanelItem {
   id: string
@@ -92,23 +73,13 @@ export function RightPanel() {
   const passCount = READINESS_CHECKS.filter((c) => c.status === "pass").length
 
   return (
-    <div
-      className="fixed right-4 top-1/2 -translate-y-1/2 z-30 flex flex-row rounded-2xl border border-[#3A3935] transition-all duration-200"
-      style={{
-        backgroundColor: "rgba(30, 30, 28, 0.95)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.3), 3px 3px 0px 0px #1A1A1A",
-      }}
+    <ChromePanel
+      className="fixed right-4 top-1/2 -translate-y-1/2 z-30 flex flex-row transition-all duration-200"
+      overflowVisible
     >
       {/* Icon column */}
       <div
-        className={[
-          "flex flex-col items-center gap-1 py-3 w-12",
-          isExpanded ? "border-r border-[#3A3935]" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+        className={`flex flex-col items-center gap-1 py-3 w-12 ${isExpanded ? "border-r border-[#3A3935]" : ""}`}
       >
         {PANEL_ITEMS.map((item) => {
           const isActive = activePanel === item.id
@@ -118,15 +89,13 @@ export function RightPanel() {
                 onClick={() => handleIconClick(item.id)}
                 aria-label={item.label}
                 aria-pressed={isActive}
-                className={[
-                  "w-8 h-8 rounded-xl flex items-center justify-center cursor-pointer transition-colors relative",
+                className={`min-w-[44px] min-h-[44px] w-8 h-8 rounded-xl flex items-center justify-center cursor-pointer transition-colors relative ${
                   isActive
                     ? "bg-[#E8863A] text-[#1A1A1A]"
-                    : "text-[#9B9589] hover:text-[#EDE9E0] hover:bg-[#2A2926]",
-                ].join(" ")}
+                    : "text-[#9B9589] hover:text-[#EDE9E0] hover:bg-[#2A2926]"
+                }`}
               >
                 {item.icon}
-                {/* Badge for print readiness failures */}
                 {item.id === "print-readiness" && failCount > 0 && !isActive && (
                   <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D64045] text-[#EDE9E0] text-[9px] font-bold flex items-center justify-center">
                     {failCount}
@@ -148,7 +117,7 @@ export function RightPanel() {
             type="button"
             aria-label="Close panel"
             onClick={handleClose}
-            className="absolute top-2.5 right-2.5 w-6 h-6 flex items-center justify-center rounded-lg text-[#9B9589] hover:text-[#EDE9E0] hover:bg-[#2A2926] transition-colors z-10"
+            className="absolute top-2.5 right-2.5 min-w-[44px] min-h-[44px] w-6 h-6 flex items-center justify-center rounded-lg text-[#9B9589] hover:text-[#EDE9E0] hover:bg-[#2A2926] transition-colors z-10"
           >
             <X size={14} />
           </button>
@@ -156,67 +125,47 @@ export function RightPanel() {
           {/* Print Readiness Panel */}
           {activePanel === "print-readiness" && (
             <>
-              <p className="font-semibold text-sm text-[#EDE9E0] pr-6">
-                Print Readiness
-              </p>
+              <Text variant="heading" color="primary" className="pr-6">Print Readiness</Text>
 
               {/* Score summary */}
-              <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-wider pb-1">
-                <span className="text-[#D64045]">{failCount} failed</span>
-                <span className="text-[#D4943D]">{warnCount} warning</span>
-                <span className="text-[#4CAF6A]">{passCount} passed</span>
+              <div className="flex items-center gap-3 pb-1">
+                <Text variant="caption" className="font-semibold uppercase tracking-wider text-[#D64045]">{failCount} failed</Text>
+                <Text variant="caption" className="font-semibold uppercase tracking-wider text-[#D4943D]">{warnCount} warning</Text>
+                <Text variant="caption" className="font-semibold uppercase tracking-wider text-[#4CAF6A]">{passCount} passed</Text>
               </div>
 
-              {/* Check rows */}
+              {/* Check rows — using StatusBadge */}
               <div className="flex flex-col gap-1.5">
                 {READINESS_CHECKS.map((check, i) => (
-                  <div
+                  <StatusBadge
                     key={i}
-                    className="flex items-start gap-2 rounded-lg px-2 py-1.5"
-                    style={{
-                      backgroundColor:
-                        check.status === "fail"
-                          ? "rgba(214, 64, 69, 0.08)"
-                          : check.status === "warning"
-                            ? "rgba(212, 148, 61, 0.06)"
-                            : "transparent",
-                    }}
-                  >
-                    <StatusIcon status={check.status} />
-                    <div className="flex flex-col gap-0.5 min-w-0">
-                      <span className="text-[11px] font-medium text-[#EDE9E0]">
-                        {check.label}
-                      </span>
-                      <span className="text-[10px] font-mono text-[#9B9589]">
-                        {check.value}
-                      </span>
-                    </div>
-                  </div>
+                    status={check.status}
+                    label={check.label}
+                    value={check.value}
+                  />
                 ))}
               </div>
 
               {/* File specs */}
               <div className="border-t border-[#3A3935] pt-2 mt-1">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#9B9589] mb-1.5">
-                  File Info
-                </p>
-                <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px]">
-                  <span className="text-[#9B9589]">Format</span>
-                  <span className="font-mono text-[#EDE9E0]">PNG</span>
-                  <span className="text-[#9B9589]">Size</span>
-                  <span className="font-mono text-[#EDE9E0]">2.4 MB</span>
-                  <span className="text-[#9B9589]">Dimensions</span>
-                  <span className="font-mono text-[#EDE9E0]">1024 × 1024</span>
-                  <span className="text-[#9B9589]">DPI</span>
-                  <span className="font-mono text-[#D64045]">72</span>
-                  <span className="text-[#9B9589]">Color</span>
-                  <span className="font-mono text-[#EDE9E0]">RGB</span>
-                  <span className="text-[#9B9589]">Background</span>
-                  <span className="font-mono text-[#D64045]">Opaque</span>
-                  <span className="text-[#9B9589]">Target</span>
-                  <span className="font-mono text-[#EDE9E0]">Youth Tee</span>
-                  <span className="text-[#9B9589]">Print Size</span>
-                  <span className="font-mono text-[#EDE9E0]">9&quot; × 11&quot;</span>
+                <Text variant="label" color="muted" className="text-[10px] mb-1.5">File Info</Text>
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                  <Text variant="data" color="muted">Format</Text>
+                  <Text variant="data" color="primary">PNG</Text>
+                  <Text variant="data" color="muted">Size</Text>
+                  <Text variant="data" color="primary">2.4 MB</Text>
+                  <Text variant="data" color="muted">Dimensions</Text>
+                  <Text variant="data" color="primary">1024 × 1024</Text>
+                  <Text variant="data" color="muted">DPI</Text>
+                  <Text variant="data" className="text-[#D64045]">72</Text>
+                  <Text variant="data" color="muted">Color</Text>
+                  <Text variant="data" color="primary">RGB</Text>
+                  <Text variant="data" color="muted">Background</Text>
+                  <Text variant="data" className="text-[#D64045]">Opaque</Text>
+                  <Text variant="data" color="muted">Target</Text>
+                  <Text variant="data" color="primary">Youth Tee</Text>
+                  <Text variant="data" color="muted">Print Size</Text>
+                  <Text variant="data" color="primary">9&quot; × 11&quot;</Text>
                 </div>
               </div>
             </>
@@ -225,20 +174,18 @@ export function RightPanel() {
           {/* Other panels — static content */}
           {activePanel && activePanel !== "print-readiness" && PANEL_CONTENT[activePanel] && (
             <>
-              <p className="font-semibold text-sm text-[#EDE9E0] pr-6">
+              <Text variant="heading" color="primary" className="pr-6">
                 {PANEL_ITEMS.find((p) => p.id === activePanel)?.label}
-              </p>
+              </Text>
               <div className="flex flex-col gap-1">
                 {PANEL_CONTENT[activePanel].map((line, i) => (
-                  <p key={i} className="text-xs text-[#9B9589] leading-relaxed">
-                    {line}
-                  </p>
+                  <Text key={i} variant="body" color="muted">{line}</Text>
                 ))}
               </div>
             </>
           )}
         </div>
       )}
-    </div>
+    </ChromePanel>
   )
 }
